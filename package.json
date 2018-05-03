@@ -1,0 +1,19 @@
+{
+  "name": "memcached",
+  "version": "1.0.0",
+  "description": "Memcached implementation in NodeJS",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/diegomedina248/Memcached.git"
+  },
+  "author": "Diego Medina",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/diegomedina248/Memcached/issues"
+  },
+  "homepage": "https://github.com/diegomedina248/Memcached#readme"
+}
