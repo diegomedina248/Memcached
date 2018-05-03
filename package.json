@@ -4,7 +4,7 @@
   "description": "Memcached implementation in NodeJS",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/diegomedina248/Memcached/issues"
   },
-  "homepage": "https://github.com/diegomedina248/Memcached#readme"
+  "homepage": "https://github.com/diegomedina248/Memcached#readme",
+  "devDependencies": {
+    "jest": "^22.4.3"
+  }
 }
