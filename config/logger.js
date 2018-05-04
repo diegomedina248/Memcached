@@ -1,5 +1,5 @@
-import joi from 'joi'
-import winston from 'winston'
+const joi = require('joi')
+const winston = require('winston')
 
 const schema = joi.object({
   LOGGER_LEVEL: joi.string()
@@ -34,4 +34,4 @@ class Logger {
   }
 }
 
-export const logger = new Logger().build()
+module.exports = new Logger().build()

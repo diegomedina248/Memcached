@@ -1,10 +1,12 @@
-import joi from 'joi'
+const joi = require('joi')
 
 const schema = joi.object({
   PORT: joi.number()
     .default(4000),
+  ADDRESS: joi.string()
+    .default('127.0.0.1'),
   NODE_ENV: joi.string()
-    .allow(['development', 'production', 'test', 'provision'])
+    .allow(['development', 'production', 'test'])
     .required(),
 }).unknown()
   .required()
@@ -29,4 +31,6 @@ class Server {
   }
 }
 
-export const server = new Server().build()
+module.exports = {
+  server: new Server().build(),
+}
