@@ -32,5 +32,5 @@ class Server {
 }
 
 module.exports = {
-  server: new Server().build()
+  server: new Server().build(),
 }

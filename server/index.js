@@ -3,5 +3,5 @@ const Client = require('./client')
 
 module.exports = {
   Server: Server,
-  Client: Client
+  Client: Client,
 }
