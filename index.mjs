@@ -1,3 +1,4 @@
-import { server, logger } from './config'
+import { Server } from './server'
 
-logger.info(server.port)
+const server = new Server()
+server.start()

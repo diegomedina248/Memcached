@@ -3,8 +3,10 @@ import joi from 'joi'
 const schema = joi.object({
   PORT: joi.number()
     .default(4000),
+  ADDRESS: joi.string()
+    .default('127.0.0.1'),
   NODE_ENV: joi.string()
-    .allow(['development', 'production', 'test', 'provision'])
+    .allow(['development', 'production', 'test'])
     .required(),
 }).unknown()
   .required()
