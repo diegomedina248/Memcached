@@ -36,7 +36,10 @@ export class Server {
     return client
   }
 
-  /** Listens for a `close` event and removes the client from the client pool */
+  /**
+   * Listens for a `close` event and removes the client from the client pool
+   * @param { Client } client the client to listen disconnection from
+   */
   listenForDisconnection(client) {
     client.socket.on(EVENT_CLOSE, () => {
       logger.info(`${client} disconnected`)
