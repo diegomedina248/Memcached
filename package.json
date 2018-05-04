@@ -4,10 +4,10 @@
   "description": "Memcached implementation in NodeJS",
   "main": "index.js",
   "scripts": {
-    "start": "NODE_ENV=development node --experimental-modules index.mjs",
-    "start:prod": "NODE_ENV=production node --experimental-modules index.mjs",
-    "test": "echo \"No test specified\" && exit 0",
-    "lint": "eslint --ext=.js,.mjs --ignore-path .gitignore ."
+    "start": "NODE_ENV=development node index.js",
+    "start:prod": "NODE_ENV=production node index.js",
+    "test": "exit 0",
+    "lint": "eslint --ignore-path .gitignore ."
   },
   "repository": {
     "type": "git",

@@ -1,9 +1,9 @@
-import { logger } from '../config'
+const { logger } = require('../config')
 
 const EVENT_DATA = 'data'
 
 /** Class to handle the communication via TCP with a single client */
-export class Client {
+class Client {
   /**
    * Constructs the object given the socket instance
    * @param { net.Socket } socket The socket communication with the client
@@ -16,7 +16,9 @@ export class Client {
 
   /** Start listening for data from the client and accordingly */
   listenForData() {
-    logger.info(`listening to ${EVENT_DATA}`)
+    this.socket.on(EVENT_DATA, (data) => {
+      logger.info(`data: ${data}`)
+    })
   }
 
   /**
@@ -26,3 +28,5 @@ export class Client {
     return `${this.address}:${this.port}`
   }
 }
+
+module.exports = Client

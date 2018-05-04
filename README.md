@@ -13,6 +13,8 @@ NODE_ENV=production node --experimental-modules index.mjs
 
 > --experimental-modules flag enables the usage of es6 modules syntax for *.mjs* files
 
+&nbsp;
+
 The following environment variables are accepted:
 
 | Variable | Description | Values | Default |

@@ -1,4 +1,4 @@
-import joi from 'joi'
+const joi = require('joi')
 
 const schema = joi.object({
   PORT: joi.number()
@@ -31,4 +31,6 @@ class Server {
   }
 }
 
-export const server = new Server().build()
+module.exports = {
+  server: new Server().build()
+}

@@ -1,12 +1,12 @@
-import net from 'net'
-import { server, logger } from '../config'
-import { Client } from './client'
+const net = require('net')
+const { server, logger } = require('../config')
+const { Client } = require('./client')
 
 const EVENT_LISTENING = 'listening'
 const EVENT_CLOSE = 'close'
 
 /** Class to start and handle a TCP server to host the Memcached app */
-export class Server {
+class Server {
   /** Constructs the object */
   constructor() {
     this.clients = []
@@ -46,4 +46,12 @@ export class Server {
       this.clients.splice(this.clients.indexOf(client), 1)
     })
   }
+
+  /** Closes the created server connection */
+  close() {
+    this.clients.forEach((client) => client.destroy())
+    this.connection.close(() => logger.info('Server closed'))
+  }
 }
+
+module.exports = Server
