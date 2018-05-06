@@ -16,7 +16,7 @@ class Server {
   /** Initializes the TCP server and start listening for clients */
   start() {
     this.store = new Store()
-    this.connection = net.createServer((socket) => {
+    this.connection = net.createServer(socket => {
       const client = this.createClient(socket)
       client.listenForData()
       this.listenForDisconnection(client)
@@ -51,7 +51,7 @@ class Server {
 
   /** Closes the created server connection */
   close() {
-    this.clients.forEach((client) => client.destroy())
+    this.clients.forEach(client => client.destroy())
     this.connection.close(() => logger.info('Server closed'))
   }
 }

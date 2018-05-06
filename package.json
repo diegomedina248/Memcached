@@ -6,7 +6,7 @@
   "scripts": {
     "start": "NODE_ENV=development node index.js",
     "start:prod": "NODE_ENV=production node index.js",
-    "test": "exit 0",
+    "test": "jest",
     "lint": "eslint --ignore-path .gitignore ."
   },
   "repository": {

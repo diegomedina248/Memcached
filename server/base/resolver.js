@@ -1,9 +1,14 @@
-const { logger } = require('../../config')
 const CommandResolver = require('../command')
 
 const END_LINE = '\r\n'
 
+/** Class that handle the requests from the client and sends back the appropiate response */
 class Resolver {
+  /**
+   * Constructs the object
+   * @param {Function} handleWrite callback function to write the responses
+   * @param {Store} store in-memory storage
+   */
   constructor(handleWrite, store) {
     this.handleWrite = handleWrite
     this.store = store
@@ -12,6 +17,10 @@ class Resolver {
     this.command = null
   }
 
+  /**
+   * Handles the request from the client and decides how to respond based on the command received, if any
+   * @param {string} info the received request
+   */
   handleRequest(info) {
     const hasEndLine = info.includes(END_LINE)
     
@@ -23,6 +32,10 @@ class Resolver {
     }
   }
 
+  /**
+   * Parses the request and, if a command is present, writes the appropiate response
+   * @param {Array} lines the request received (one for each line terminated in \r\n)
+   */
   parseRequest(lines) {
     this.addBufferToFirstLine(lines)
     this.addLastLineToBufferIfNeeded(lines)
@@ -30,11 +43,19 @@ class Resolver {
     this.executeCommand(lines)
   }
 
+  /**
+   * If the last request didn't finish with \r\n, add that to the first request received
+   * @param {Array} lines the current requests
+   */
   addBufferToFirstLine(lines) {
     lines[0] = this.buffer + lines[0]
     this.buffer = ''
   }
 
+  /**
+   * If the last line contains text, add it to the buffer (since it doesn't have \r\n ending)
+   * @param {Array} lines the current requests
+   */
   addLastLineToBufferIfNeeded(lines) {
     const lastLine = lines.pop()
     if (lastLine) {
@@ -42,6 +63,10 @@ class Resolver {
     }
   }
 
+  /**
+   * Remove the first line and parse it to obtain, if possible, a valid command to execute
+   * @param {Array} lines the current Request
+   */
   parseCommand(lines) {
     if (!this.command) {
       const commandLine = lines.shift()
@@ -49,6 +74,10 @@ class Resolver {
     }
   }
 
+  /**
+   * Executes the current command with the received data
+   * @param {Array} lines the data received
+   */
   executeCommand(lines) {
     try {
       this.command.execute(lines, this.handleWrite)
