@@ -6,12 +6,10 @@ jest.mock('../server/store/store.js')
 
 describe('Checking get and gets commands', () => {
   let store
-  let casUnique
   let item
 
   beforeEach(() => {
-    casUnique = Date.now()
-    item = new Item('test', 3, 0, 4, casUnique, 'asdf')
+    item = new Item('test', 3, 0, 4, 'asdf')
 
     store = new Store()
     store.get = jest.fn().mockImplementation(key => item.key === key && item)
@@ -61,7 +59,7 @@ describe('Checking get and gets commands', () => {
     command.execute([], handleWrite)
 
     expect(handleWrite.mock.calls).toEqual([
-      [`VALUE test 3 0 4 ${casUnique}`],
+      [`VALUE test 3 0 4 ${item.getCasUnique()}`],
       ['asdf'],
       ['END'],
     ])
@@ -81,7 +79,7 @@ describe('Checking get and gets commands', () => {
   })
 
   test('Command get execution with multiple keys should result in multiple items', () => {
-    const secondItem = new Item('secondTest', 3, 0, 2, 0, 'AX')
+    const secondItem = new Item('secondTest', 3, 0, 2, 'AX')
     store.get = jest.fn().mockImplementation(key => [item, secondItem].find(element => element.key === key))
 
     const command = new GetCommand([item.key, secondItem.key], store, false)
