@@ -1,5 +1,7 @@
 const CommandResolver = require('../command')
+const { NonExistentCommandError, ClientError, ServerError } = require('../exception')
 
+const SERVER_ERROR_MESSAGE = 'There was a problem handling your request. Please try again later'
 const END_LINE = '\r\n'
 
 /** Class that handle the requests from the client and sends back the appropiate response */
@@ -86,7 +88,12 @@ class Resolver {
       }
     } catch (exception) {
       this.command = null
-      throw exception
+      
+      if (exception instanceof ClientError || exception instanceof NonExistentCommandError) {
+        throw exception
+      }
+
+      throw new ServerError(SERVER_ERROR_MESSAGE)
     }
   }
 }

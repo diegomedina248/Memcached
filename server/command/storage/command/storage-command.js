@@ -49,7 +49,7 @@ class StorageCommand extends Command {
    * @return {Item} the created item
    */
   toEntity(data) {
-    return new Item(this.key, this.flags, this.exptime, this.bytes, Date.now(), data)
+    return new Item(this.key, this.flags, this.exptime, this.bytes, data)
   }
 }
 

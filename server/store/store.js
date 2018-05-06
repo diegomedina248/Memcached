@@ -11,6 +11,7 @@ class Store {
    * @param {item} item data to be stored
    */
   set(key, item) {
+    item.updateCasUnique()
     this.store.set(key, item)
   }
 
@@ -20,7 +21,14 @@ class Store {
    * @return {Item} the item associated with `key`, or null if none exists
    */
   get(key) {
-    return this.store.get(key)
+    const item = this.store.get(key)
+
+    if (item && item.hasExpired(new Date())) {
+      this.store.delete(key)
+      return null
+    }
+
+    return item || null
   }
 }
 
