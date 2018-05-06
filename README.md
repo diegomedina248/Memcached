@@ -8,10 +8,8 @@ Memcached implementation in NodeJS
 To run, simply execute:
 
 ```console
-NODE_ENV=production node --experimental-modules index.mjs
+NODE_ENV=production node index.js
 ```
-
-> --experimental-modules flag enables the usage of es6 modules syntax for *.mjs* files
 
 &nbsp;
 

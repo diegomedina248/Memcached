@@ -1,6 +1,7 @@
 const net = require('net')
-const { server, logger } = require('../config')
-const { Client } = require('./client')
+const { server, logger } = require('../../config')
+const Client = require('./client')
+const { Store } = require('../store')
 
 const EVENT_LISTENING = 'listening'
 const EVENT_CLOSE = 'close'
@@ -14,14 +15,15 @@ class Server {
 
   /** Initializes the TCP server and start listening for clients */
   start() {
-    this.connection = net.createServer((socket) => {
+    this.store = new Store()
+    this.connection = net.createServer(socket => {
       const client = this.createClient(socket)
       client.listenForData()
       this.listenForDisconnection(client)
     })
 
     this.connection.listen(server.port, server.address)
-    this.connection.on(EVENT_LISTENING, () => logger.info('Server started'))
+    this.connection.on(EVENT_LISTENING, () => logger.info(`Server started at ${server.port}`))
   }
 
   /**
@@ -30,7 +32,7 @@ class Server {
    * @return { Client } the created Client instance
    */
   createClient(socket) {
-    const client = new Client(socket)
+    const client = new Client(socket, this.store)
     this.clients.push(client)
     logger.info(`${client} connected`)
     return client
@@ -49,7 +51,7 @@ class Server {
 
   /** Closes the created server connection */
   close() {
-    this.clients.forEach((client) => client.destroy())
+    this.clients.forEach(client => client.destroy())
     this.connection.close(() => logger.info('Server closed'))
   }
 }

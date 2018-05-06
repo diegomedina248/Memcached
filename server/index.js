@@ -1,5 +1,5 @@
-const Server = require('./server')
-const Client = require('./client')
+const Server = require('./base/server')
+const Client = require('./base/client')
 
 module.exports = {
   Server: Server,

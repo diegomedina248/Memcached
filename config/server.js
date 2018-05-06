@@ -31,6 +31,4 @@ class Server {
   }
 }
 
-module.exports = {
-  server: new Server().build(),
-}
+module.exports = new Server().build()
