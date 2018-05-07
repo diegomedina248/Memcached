@@ -45,4 +45,11 @@ describe('Checking storage commands validity', () => {
     command = new StorageCommand(['key', 0, 0, 4], store)
     expect(() => command.execute(['some longer data than expected'], null)).toThrowError(ClientError)
   })
+
+  test('Command with bigger than allowed key should be invalid', () => {
+    const key = new Array(251).fill('a').join('')
+
+    command = new StorageCommand([key, 0, 0, 4], store)
+    expect(() => command.execute(['some'], null)).toThrowError(ClientError)
+  })
 })

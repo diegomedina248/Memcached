@@ -13,6 +13,10 @@ class Store {
   set(key, item) {
     item.updateCasUnique()
     this.store.set(key, item)
+    
+    if (item.hasExpired(new Date())) {
+      this.store.delete(key)
+    }
   }
 
   /**

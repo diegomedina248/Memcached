@@ -37,6 +37,7 @@ describe('Check the correct operation of the store', () => {
 
     store.set(item.key, item)
 
+    expect(store.get(item.key)).toBe(item)
     setTimeout(() => expect(store.get(item.key)).toBe(item), 10)
   })
 
@@ -45,6 +46,15 @@ describe('Check the correct operation of the store', () => {
 
     store.set(item.key, item)
 
+    expect(store.get(item.key)).toBe(item)
     setTimeout(() => expect(store.get(item.key)).toBeNull(), 50)
+  })
+
+  test('Storing item with negative expiration time should inmediately remove it', () => {
+    const item = new Item('test', 3, -1, 4, 'asdf')
+
+    store.set(item.key, item)
+
+    expect(store.get(item.key)).toBeNull()
   })
 })

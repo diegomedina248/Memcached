@@ -29,4 +29,15 @@ describe('Checking set command', () => {
     expect(handleWrite).toHaveBeenCalledWith('STORED')
     expect(command.isFinished()).toBeTruthy()
   })
+
+  test('Command with data and noreply option should store it and don\'t respond', () => {
+    command = new SetCommand(['key', 0, 0, 4, 'noreply'], store)
+    const handleWrite = jest.fn()
+
+    command.execute(['asdf'], handleWrite)
+
+    expect(store.set).toHaveBeenCalled()
+    expect(handleWrite).not.toHaveBeenCalled()
+    expect(command.isFinished()).toBeTruthy()
+  })
 })
