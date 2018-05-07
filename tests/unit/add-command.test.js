@@ -1,5 +1,5 @@
-const AddCommand = require('../server/command/storage/command/add-command.js')
-const { Store } = require('../server/store')
+const AddCommand = require('../../server/command/storage/command/add-command.js')
+const { Store } = require('../../server/store')
 
 describe('Checking set command', () => {
   let store

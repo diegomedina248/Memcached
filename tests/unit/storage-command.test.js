@@ -1,8 +1,8 @@
-const StorageCommand = require('../server/command/storage/command/storage-command.js')
-const { Store } = require('../server/store')
-const { ClientError } = require('../server/exception')
+const StorageCommand = require('../../server/command/storage/command/storage-command.js')
+const { Store } = require('../../server/store')
+const { ClientError } = require('../../server/exception')
 
-jest.mock('../server/store/store.js')
+jest.mock('../../server/store/store.js')
 
 describe('Checking storage commands validity', () => {
   let store

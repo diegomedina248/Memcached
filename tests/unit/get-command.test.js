@@ -1,8 +1,8 @@
-const GetCommand = require('../server/command/retrieval/get-command.js')
-const { Store, Item } = require('../server/store')
-const { ClientError } = require('../server/exception')
+const GetCommand = require('../../server/command/retrieval/get-command.js')
+const { Store, Item } = require('../../server/store')
+const { ClientError } = require('../../server/exception')
 
-jest.mock('../server/store/store.js')
+jest.mock('../../server/store/store.js')
 
 describe('Checking get and gets commands', () => {
   let store

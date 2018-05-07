@@ -23,4 +23,4 @@ jobs:
           background: true
       - run:
           command: 'sleep 5'
-      - run: ./node_modules/artillery/bin/artillery run tests/load-tests.yml
+      - run: ./node_modules/artillery/bin/artillery run tests/load/load-tests.yml

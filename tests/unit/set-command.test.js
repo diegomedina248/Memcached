@@ -1,7 +1,7 @@
-const SetCommand = require('../server/command/storage/command/set-command.js')
-const { Store } = require('../server/store')
+const SetCommand = require('../../server/command/storage/command/set-command.js')
+const { Store } = require('../../server/store')
 
-jest.mock('../server/store/store.js')
+jest.mock('../../server/store/store.js')
 
 describe('Checking set command', () => {
   let store

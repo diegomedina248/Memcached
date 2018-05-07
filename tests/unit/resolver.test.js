@@ -1,8 +1,8 @@
-const Resolver = require('../server/base/resolver.js')
-const { CommandResolver, Command } = require('../server/command/base')
+const Resolver = require('../../server/base/resolver.js')
+const { CommandResolver, Command } = require('../../server/command/base')
 
-jest.mock('../server/command/base/command-resolver.js')
-jest.mock('../server/command/base/command.js')
+jest.mock('../../server/command/base/command-resolver.js')
+jest.mock('../../server/command/base/command.js')
 
 describe('Checking correct command and data parsing', () => {
   let resolver
