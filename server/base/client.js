@@ -30,7 +30,7 @@ class Client {
   handleData(data) {
     try {
       const info = this.parseData(data)
-      logger.info(`Received data from ${this}`)
+      logger.info(`Received data from ${this}: ${info}`)
       this.resolver.handleRequest(info)
     } catch (exception) {
       this.handleWrite(`${exception}`)
@@ -51,6 +51,7 @@ class Client {
    * @param {string} text the information to send to the client
    */
   handleWrite(text) {
+    logger.info(`Send data to ${this}: ${text}`)
     this.socket.write(`${text}${END_LINE}`)
   }
 
