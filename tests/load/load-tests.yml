@@ -23,3 +23,9 @@ scenarios:
         - send:
             payload: "get a\r\n"
         - think: 1
+        - send:
+            payload: "get\r\n"
+        - think: 1
+        - send:
+            payload: "set a\r\n"
+        - think: 1
