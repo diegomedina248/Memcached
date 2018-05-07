@@ -1,0 +1,33 @@
+{
+  "name": "memcached",
+  "version": "1.0.0",
+  "description": "Memcached implementation in NodeJS",
+  "main": "index.js",
+  "scripts": {
+    "start": "NODE_ENV=development node index.js",
+    "start:prod": "NODE_ENV=production node index.js",
+    "test": "jest",
+    "lint": "eslint --ignore-path .gitignore ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/diegomedina248/Memcached.git"
+  },
+  "author": "Diego Medina",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/diegomedina248/Memcached/issues"
+  },
+  "homepage": "https://github.com/diegomedina248/Memcached#readme",
+  "devDependencies": {
+    "artillery": "^1.6.0-15",
+    "artillery-engine-tcp": "^1.0.0",
+    "eslint": "^4.19.1",
+    "eslint-config-google": "^0.9.1",
+    "jest": "^22.4.3"
+  },
+  "dependencies": {
+    "joi": "^13.2.0",
+    "winston": "^3.0.0-rc5"
+  }
+}
