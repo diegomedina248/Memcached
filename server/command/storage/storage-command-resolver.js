@@ -1,4 +1,4 @@
-const { SetCommand } = require('./command')
+const { SetCommand, AddCommand, ReplaceCommand, AppendCommand, CasCommand } = require('./command')
 
 const COMMAND_SET = 'set'
 const COMMAND_ADD = 'add'
@@ -20,11 +20,11 @@ class StorageCommandResolver {
 
     switch (command) {
       case COMMAND_SET: return new SetCommand(params, store)
-      case COMMAND_ADD: return null
-      case COMMAND_REPLACE: return null
-      case COMMAND_APPEND: return null
-      case COMMAND_PREPEND: return null
-      case COMMAND_CAS: return null
+      case COMMAND_ADD: return new AddCommand(params, store)
+      case COMMAND_REPLACE: return new ReplaceCommand(params, store)
+      case COMMAND_APPEND: return new AppendCommand(params, store, false)
+      case COMMAND_PREPEND: return new AppendCommand(params, store, true)
+      case COMMAND_CAS: return new CasCommand(params, store)
       default: return null
     }
   }
