@@ -3,7 +3,10 @@ const { Item } = require('../../../store')
 const { ClientError } = require('../../../exception')
 
 const NO_REPLY = 'noreply'
+const KEY_MAX_LENGTH = 250
+
 const LENGTH_MESSAGE = 'The length of the data is different than specified'
+const KEY_LENGTH_MESSAGE = `The length of the key must not exceed ${KEY_MAX_LENGTH}`
 const MALFORMED_DATA_MESSAGE = 'More than one value received'
 
 /** Generic `storage` command to be extended by the actual commands */
@@ -35,6 +38,10 @@ class StorageCommand extends Command {
 
     if (data[0].length != this.bytes) {
       throw new ClientError(LENGTH_MESSAGE)
+    }
+
+    if (this.key.length > KEY_MAX_LENGTH) {
+      throw new ClientError(KEY_LENGTH_MESSAGE)
     }
   }
 

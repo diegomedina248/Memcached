@@ -51,7 +51,7 @@ class Server {
 
   /** Closes the created server connection */
   close() {
-    this.clients.forEach(client => client.destroy())
+    this.clients.forEach(client => client.server.destroy())
     this.connection.close(() => logger.info('Server closed'))
   }
 }
