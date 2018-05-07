@@ -1,4 +1,4 @@
-const { Command } = require('../../base')
+const Command = require('../../base/command.js')
 const { Item } = require('../../../store')
 const { ClientError } = require('../../../exception')
 
