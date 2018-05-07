@@ -56,7 +56,7 @@ class Item {
    * @return {boolean} false if `currentDate` is greater than expiration date
    */
   hasExpired(currentDate) {
-    return this.exptime > 0 && currentDate.getTime() < this.getExpirationDate().getTime()
+    return this.exptime > 0 && currentDate.getTime() > this.getExpirationDate().getTime()
   }
 
   /**

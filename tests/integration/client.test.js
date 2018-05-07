@@ -53,10 +53,10 @@ describe('Checking client correctly responds to requests', () => {
 
     setTimeout(() => {
       expect(socketMock.write.mock.calls).toEqual([
-        [`END\r\n`],
         [`VALUE a 0 0 4\r\n`],
         ['asdf\r\n'],
         ['END\r\n'],
+        [`END\r\n`],
       ])
     }, 120)
   })
