@@ -1,5 +1,5 @@
-const AppendCommand = require('../server/command/storage/command/append-command.js')
-const { Store } = require('../server/store')
+const AppendCommand = require('../../server/command/storage/command/append-command.js')
+const { Store } = require('../../server/store')
 
 describe('Checking replace command', () => {
   let store

@@ -1,5 +1,5 @@
-const ReplaceCommand = require('../server/command/storage/command/replace-command.js')
-const { Store } = require('../server/store')
+const ReplaceCommand = require('../../server/command/storage/command/replace-command.js')
+const { Store } = require('../../server/store')
 
 describe('Checking replace command', () => {
   let store

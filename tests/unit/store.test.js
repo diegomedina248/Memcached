@@ -1,4 +1,4 @@
-const { Store, Item } = require('../server/store')
+const { Store, Item } = require('../../server/store')
 
 describe('Check the correct operation of the store', () => {
   let store

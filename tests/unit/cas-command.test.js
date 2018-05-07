@@ -1,5 +1,5 @@
-const CasCommand = require('../server/command/storage/command/cas-command.js')
-const { Store } = require('../server/store')
+const CasCommand = require('../../server/command/storage/command/cas-command.js')
+const { Store } = require('../../server/store')
 
 describe('Checking set command', () => {
   let store
