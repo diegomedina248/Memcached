@@ -1,0 +1,25 @@
+config:
+  target: "localhost"
+  tcp:
+    port: 4000
+  phases:
+    - arrivalCount: 100
+      duration: 1
+  engines:
+    tcp: {}
+ 
+scenarios:
+  - name: "Send data"
+    engine: tcp
+    flow:
+      - count: 2
+        loop:
+        - send:
+            payload: "get a\r\n"
+        - think: 1
+        - send:
+            payload: "set a 0 0 5\r\nasdfg\r\n"
+        - think: 1
+        - send:
+            payload: "get a\r\n"
+        - think: 1

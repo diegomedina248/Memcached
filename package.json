@@ -20,6 +20,8 @@
   },
   "homepage": "https://github.com/diegomedina248/Memcached#readme",
   "devDependencies": {
+    "artillery": "^1.6.0-15",
+    "artillery-engine-tcp": "^1.0.0",
     "eslint": "^4.19.1",
     "eslint-config-google": "^0.9.1",
     "jest": "^22.4.3"
