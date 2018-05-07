@@ -45,13 +45,13 @@ test
 
 All tests can be found under the *tests* directory.
 
-Unit tests use `jest` and can be found under the *unit* directory. To run them, type the following:
+Unit and integration tests use `jest` and can be found under their respective subdirectory. To run them, type the following:
 
 ```console
 npm test
 ```
 
-Stress tests use `artillery` and can be found under the *load* directory. To run them, type the following:
+Stress tests use `artillery` and can be found under the *load* subdirectory. To run them, type the following:
 
 ```console
 artillery run tests/load/load-tests.yml
